@@ -37,3 +37,8 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# Sensitive files and logs
+.env
+logs/
+*.log
