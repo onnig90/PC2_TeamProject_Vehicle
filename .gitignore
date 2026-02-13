@@ -39,6 +39,6 @@ build/
 .DS_Store
 
 # Sensitive files and logs
-
+.env
 logs/
 *.log
