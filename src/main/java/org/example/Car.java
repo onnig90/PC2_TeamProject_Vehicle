@@ -1,3 +1,5 @@
+package org.example;
+
 public class Car extends Vehicle {
 
     private int doorCount;
@@ -14,7 +16,7 @@ public class Car extends Vehicle {
     }
     @Override
     public String getCategory() {
-        return "Car";
+        return "org.example.Car";
     }
     public void openTrunk() {
         System.out.println("Trunk opened. Capacity: " + trunkCapacity + " cubic feet");
