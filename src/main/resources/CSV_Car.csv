@@ -1,0 +1,5 @@
+vin,make,model,year,mileage,price,available,doorCount,trunkCap,hasAirConditioning
+1HGCM82633A004351,Toyota,Corolla,2018,109365,"20,999.00",TRUE,,,
+2HGFB2F59CH123456,Toyota,,2018,47932,"26,000.00",TRUE,,,
+1FTFW1E50LFA98765,Honda,Prelude,2025,23084,"46,200.00",FALSE,,,
+JKAEXMJ17MDA54321,Ford,F-150,2019,85004,"28,999.00",FALSE,,,
