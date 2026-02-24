@@ -37,7 +37,7 @@ public class CarDAO {
                 if(rs.next()) {
                     carId = rs.getInt(1);
                 } else {
-                    throw new SQLException("Failed to get the car ID");
+                    throw new SQLException("Failed to get the Car ID");
                 }
             }
 

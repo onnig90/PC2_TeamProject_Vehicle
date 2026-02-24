@@ -15,4 +15,20 @@ public class Motorcycle extends Vehicle {
     public String getCategory() {
         return "Motorcycle";
     }
+
+    public boolean getHasSidecar() {
+        return hasSidecar;
+    }
+
+    public void setHasSidecar(boolean hasSidecar) {
+        this.hasSidecar = hasSidecar;
+    }
+
+    public double getForkLength() {
+        return forkLength;
+    }
+
+    public void setForkLength(double forkLength) {
+        this.forkLength = forkLength;
+    }
 }
