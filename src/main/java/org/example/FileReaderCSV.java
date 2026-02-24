@@ -9,7 +9,7 @@ public final class FileReaderCSV {
     private static final String csvSplitBy = ",";
 
     private static ArrayList<String[]> LoadFromCSV(String csvPath) {
-        ArrayList<String[]> carValuesList = new ArrayList<>();
+        ArrayList<String[]> csvValuesList = new ArrayList<>();
         String line = "";
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvPath))) {
@@ -19,13 +19,13 @@ public final class FileReaderCSV {
             // Get values
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(csvSplitBy);
-                carValuesList.add(data);
+                csvValuesList.add(data);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return carValuesList;
+        return csvValuesList;
     }
 
     public static ArrayList<String[]> LoadCarCSV() {
