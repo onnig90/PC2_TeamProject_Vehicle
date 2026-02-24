@@ -9,8 +9,7 @@ public abstract class Vehicle {
     protected double price;
     protected boolean available;
 
-    public Vehicle(String vin, String make, String model, int year,
-                   int mileage, double price) {
+    public Vehicle(String vin, String make, String model, int year, int mileage, double price) {
         this.vin = vin;
         this.make = make;
         this.model = model;
@@ -18,7 +17,6 @@ public abstract class Vehicle {
         this.mileage = mileage;
         this.price = price;
         this.available = true;
-
     }
 
     public void markSold() {
