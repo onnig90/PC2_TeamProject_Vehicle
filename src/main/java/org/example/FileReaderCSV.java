@@ -5,13 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class FileReaderCSV {
 
     // --- READ CARS ---
-    public static List<Car> loadCarsFromCSV(String filePath) {
-        List<Car> carList = new ArrayList<>();
+    public static ArrayList<Car> loadCarsFromCSV(String filePath) {
+        ArrayList<Car> carList = new ArrayList<>();
         
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -30,14 +29,14 @@ public class FileReaderCSV {
     }
 
     // --- READ MOTORBIKES ---
-    public static List<Motorbike> loadMotorbikesFromCSV(String filePath) {
-        List<Motorbike> motorbikeList = new ArrayList<>();
+    public static ArrayList<Motorcycle> loadMotorbikesFromCSV(String filePath) {
+        ArrayList<Motorcycle> motorbikeList = new ArrayList<>();
         
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                Motorbike newMoto = parseMotorbike(data);
+                Motorcycle newMoto = parseMotorcycle(data);
                 
                 if (newMoto != null) {
                     motorbikeList.add(newMoto);
@@ -52,7 +51,7 @@ public class FileReaderCSV {
     // --- PARSING HELPER: CAR ---
     private static Car parseCar(String[] data) {
         try {
-            int vin = Integer.parseInt(data[0].trim()); 
+            String vin = data[0].trim();
             String make = data[1].trim();
             String model = data[2].trim();
             int year = Integer.parseInt(data[3].trim());
@@ -70,10 +69,10 @@ public class FileReaderCSV {
         }
     }
 
-    // --- PARSING HELPER: MOTORBIKE ---
-    private static Motorbike parseMotorbike(String[] data) {
+    // --- PARSING HELPER: MOTORCYCLE ---
+    private static Motorcycle parseMotorcycle(String[] data) {
         try {
-            int vin = Integer.parseInt(data[0].trim()); 
+            String vin = data[0].trim();
             String make = data[1].trim();
             String model = data[2].trim();
             int year = Integer.parseInt(data[3].trim());
@@ -83,9 +82,9 @@ public class FileReaderCSV {
             boolean hasSidecar = Boolean.parseBoolean(data[6].trim());
             double forkLength = Double.parseDouble(data[7].trim());
 
-            return new Motorbike(vin, make, model, year, mileage, price, hasSidecar, forkLength);
+            return new Motorcycle(vin, make, model, year, mileage, price, hasSidecar, forkLength);
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            System.err.println("Invalid data format for Motorbike row: " + Arrays.toString(data));
+            System.err.println("Invalid data format for Motorcycle row: " + Arrays.toString(data));
             return null; 
         }
     }

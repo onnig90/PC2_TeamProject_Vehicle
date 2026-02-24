@@ -1,11 +1,11 @@
 package org.example;
 
-public class Motorbike extends Vehicle {
+public class Motorcycle extends Vehicle {
     private boolean hasSidecar;
     // FIX: Removed the invalid enum line
     private double forkLength;
 
-    public Motorbike(int vin, String make, String model, int year, int mileage, double price, boolean hasSidecar, double forkLength) {
+    public Motorcycle(String vin, String make, String model, int year, int mileage, double price, boolean hasSidecar, double forkLength) {
         super(vin, make, model, year, mileage, price);
         this.hasSidecar = hasSidecar;
         this.forkLength = forkLength;
@@ -13,6 +13,6 @@ public class Motorbike extends Vehicle {
 
     @Override
     public String getCategory() {
-        return "Motorbike";
+        return "Motorcycle";
     }
 }

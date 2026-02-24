@@ -1,14 +1,14 @@
 package org.example;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Starting Vehicle Management System...");
 
         // --- Read from files and create objects ---
-        List<Car> carList = FileReaderCSV.loadCarsFromCSV("src/main/resources/CSV_Car.csv");
-        List<Motorbike> motorbikeList = FileReaderCSV.loadMotorbikesFromCSV("src/main/resources/CSV_Motorbike.csv");
+        ArrayList<Car> carList = FileReaderCSV.loadCarsFromCSV("src/main/resources/CSV_Car.csv");
+        ArrayList<Motorcycle> motorbikeList = FileReaderCSV.loadMotorbikesFromCSV("src/main/resources/CSV_Motorcycle.csv");
 
         // --- Display item information in the console ---
         System.out.println("\n--- Loaded Cars ---");
@@ -27,7 +27,7 @@ public class Main {
         if (motorbikeList.isEmpty()) {
             System.out.println("No motorbikes were loaded. Check your motorbikes.csv file.");
         } else {
-            for (Motorbike moto : motorbikeList) {
+            for (Motorcycle moto : motorbikeList) {
                 System.out.println("Category: " + moto.getCategory() + 
                                    " | VIN: " + moto.vin + 
                                    " | Make: " + moto.make + 
