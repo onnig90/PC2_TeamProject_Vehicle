@@ -8,8 +8,8 @@ public class Main {
         System.out.println("Starting Vehicle Management System...");
 
         // --- Read from files and create objects ---
-        ArrayList<Car> carList = FileReaderCSV.loadCarsFromCSV("src/main/resources/CSV_Car.csv");
-        ArrayList<Motorcycle> motorcycleList = FileReaderCSV.loadMotorcyclesFromCSV("src/main/resources/CSV_Motorcycle.csv");
+        ArrayList<Car> carList = FileReaderCSV.loadCarsFromCSV(System.getenv("PATH_CSV_CAR"));
+        ArrayList<Motorcycle> motorcycleList = FileReaderCSV.loadMotorcyclesFromCSV(System.getenv("PATH_CSV_MOTORCYCLE"));
 
         // --- Display item information in the console ---
         System.out.println("\n--- Loaded Cars ---");
