@@ -1,8 +1,7 @@
 package org.example;
 
 public abstract class Vehicle {
-
-    protected int vin;
+    protected String vin; // Changed to String
     protected String make;
     protected String model;
     protected int year;
@@ -10,19 +9,19 @@ public abstract class Vehicle {
     protected double price;
     protected boolean available;
 
-    public Vehicle(int vin, String make, String model, int year,
-                   int mileage, double price) {
+    public Vehicle(String vin, String make, String model, int year, int mileage, double price) { // Changed int to String
         this.vin = vin;
         this.make = make;
         this.model = model;
         this.year = year;
         this.mileage = mileage;
         this.price = price;
-        this.available = true;
+        this.available = true; 
+    }
 
-    }
     public void markSold() {
-        available = false;
+        this.available = false;
     }
+
     public abstract String getCategory();
 }
