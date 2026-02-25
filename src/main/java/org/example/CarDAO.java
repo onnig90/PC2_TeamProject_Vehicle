@@ -12,7 +12,7 @@ public class CarDAO {
         try (
                 Connection connection = DBUtil.getConnection();
                 PreparedStatement psVehicle = connection.prepareStatement(INSERT_VEHICLE_SQL);
-                PreparedStatement psCar = connection.prepareStatement(INSERT_CAR_SQL);
+                PreparedStatement psCar = connection.prepareStatement(INSERT_CAR_SQL, Statement.RETURN_GENERATED_KEYS);
                 PreparedStatement psCarVehicle = connection.prepareStatement(INSERT_CARVEHICLE_SQL)
         ) {
             // insert into Vehicle table
@@ -23,13 +23,6 @@ public class CarDAO {
             psVehicle.setBoolean(5, car.getIsAvailable());
 
             psVehicle.executeUpdate();
-            //try {
-            //    psVehicle.executeUpdate();
-            //} catch (SQLException e) {
-            //    System.err.println("Can't add vehicle.");
-            //    e.printStackTrace();
-            //    return;
-            //}
 
             // insert into Car table
             // insert car sql

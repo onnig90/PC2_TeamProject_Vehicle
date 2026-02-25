@@ -5,7 +5,8 @@ import java.sql.*;
 public class MotorcycleDAO {
     public static void insertMotorcycle(Motorcycle motorcycle) throws SQLException {
         String INSERT_VEHICLE_SQL = "insert into vehicle(vin, year, mileage, price, available) values (?, ?, ?, ?, ?)";
-        String INSERT_MOTO_SQL = "insert into motorcycle(motoMake, motoModel, hasSideCar, forkLength) values (?, ?, ?, ?)";
+        String INSERT_MOTO_SQL = "insert into motorcycle(motoMake, motoModel, hasSideCar, forkLength) values (?, ?, ?, ?);" +
+                "select motoID from motorcycle where motoMake = ? and motoModel = ?";
         String INSERT_MOTOVEHICLE_SQL = "insert into motorcyclevehicle(vin, motoID) values (?, ?)";
 
         try (
@@ -24,19 +25,33 @@ public class MotorcycleDAO {
             psVehicle.executeUpdate();
 
             // insert into Motorcycle table
+            // insert motorcycle sql
             psMotorcycle.setString(1, motorcycle.getMake());
             psMotorcycle.setString(2, motorcycle.getModel());
             psMotorcycle.setBoolean(3, motorcycle.getHasSidecar());
             psMotorcycle.setDouble(4, motorcycle.getForkLength());
+            // select id sql
+            psMotorcycle.setString(5, motorcycle.getMake());
+            psMotorcycle.setString(6, motorcycle.getModel());
 
-            psMotorcycle.executeUpdate();
+            boolean isMotorcycleAdded = true;
+            try {
+                psMotorcycle.executeUpdate();
+            } catch (SQLException e) {
+                isMotorcycleAdded = false;
+            }
 
             int motorcycleId;
             try (ResultSet rs = psMotorcycle.getGeneratedKeys()) {
                 if (rs.next()) {
                     motorcycleId = rs.getInt(1);
                 } else {
-                    throw new SQLException("Failed to get the Motorcycle ID");
+                    if (!isMotorcycleAdded) {
+                        motorcycleId = rs.getInt("motoId");
+                    } else {
+                        connection.rollback();
+                        throw new SQLException("Failed to get the Motorcycle ID");
+                    }
                 }
             }
 
