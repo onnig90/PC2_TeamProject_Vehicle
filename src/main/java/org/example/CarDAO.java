@@ -4,8 +4,10 @@ import java.sql.*;
 
 public class CarDAO {
     public static void insertCar(Car car) throws SQLException {
-        String INSERT_VEHICLE_SQL = "insert into vehicle(vin, year, mileage, price, available) values (?, ?, ?, ?, ?)";
-        String INSERT_CAR_SQL = "insert into car(carMake, carModel, doorCount, trunkCap, hasAirConditioning) values (?, ?, ?, ?, ?)";
+        String INSERT_VEHICLE_SQL = "insert into vehicle(vin, year, mileage, price, available)" +
+                " values (?, ?, ?, ?, ?)";
+        String INSERT_CAR_SQL = "insert into car(carMake, carModel, doorCount, trunkCap, hasAirConditioning) " +
+                "values (?, ?, ?, ?, ?)";
         String INSERT_CARVEHICLE_SQL = "insert into carvehicle(vin, carID) values (?, ?)";
 
         try (
@@ -14,7 +16,8 @@ public class CarDAO {
                 PreparedStatement psCar = connection.prepareStatement(INSERT_CAR_SQL, Statement.RETURN_GENERATED_KEYS);
                 PreparedStatement psCarVehicle = connection.prepareStatement(INSERT_CARVEHICLE_SQL)
         ) {
-            // insert into Vehicle table
+            // ins
+            // ert into Vehicle table
             psVehicle.setString(1, car.getVin());
             psVehicle.setInt(2, car.getYear());
             psVehicle.setInt(3, car.getMileage());
