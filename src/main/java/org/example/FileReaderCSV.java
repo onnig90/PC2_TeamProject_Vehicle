@@ -16,7 +16,10 @@ public class FileReaderCSV {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
                 Car newCar = parseCar(data);
-                if (newCar != null) carList.add(newCar);
+
+                if (newCar != null) {
+                    carList.add(newCar);
+                }
             }
         } catch (IOException e) {
             System.err.println("Error reading the car file: " + e.getMessage());
@@ -33,7 +36,7 @@ public class FileReaderCSV {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
                 Motorcycle newMoto = parseMotorcycle(data);
-                
+
                 if (newMoto != null) {
                     motorcycleList.add(newMoto);
                 }
@@ -52,16 +55,15 @@ public class FileReaderCSV {
             int year = Integer.parseInt(data[3].trim());
             int mileage = Integer.parseInt(data[4].trim());
             double price = Double.parseDouble(data[5].trim());
-            
-            // Index 6 is the "available" boolean, so we skip to 7
+            boolean available = Boolean.parseBoolean(data[6].trim());
             int doorCount = Integer.parseInt(data[7].trim());
             double trunkCapacity = Double.parseDouble(data[8].trim());
             boolean hasAirConditioning = Boolean.parseBoolean(data[9].trim());
 
-            return new Car(vin, make, model, year, mileage, price, doorCount, trunkCapacity, hasAirConditioning);
-        } catch (Exception e) { // Changed to general Exception to catch array out of bounds too
+            return new Car(vin, make, model, year, mileage, price, available, doorCount, trunkCapacity, hasAirConditioning);
+        } catch (Exception e) {
             System.err.println("Invalid data format for Car row: " + Arrays.toString(data));
-            return null; 
+            return null;
         }
     }
 
@@ -74,15 +76,14 @@ public class FileReaderCSV {
             int year = Integer.parseInt(data[3].trim());
             int mileage = Integer.parseInt(data[4].trim());
             double price = Double.parseDouble(data[5].trim());
-            
-            // Index 6 is the "available" boolean, so we skip to 7
+            boolean available = Boolean.parseBoolean(data[6].trim());
             boolean hasSidecar = Boolean.parseBoolean(data[7].trim());
             double forkLength = Double.parseDouble(data[8].trim());
 
-            return new Motorcycle(vin, make, model, year, mileage, price, hasSidecar, forkLength);
+            return new Motorcycle(vin, make, model, year, mileage, price, available, hasSidecar, forkLength);
         } catch (Exception e) {
             System.err.println("Invalid data format for Motorcycle row: " + Arrays.toString(data));
-            return null; 
+            return null;
         }
     }
 }

@@ -4,8 +4,8 @@ public class Motorcycle extends Vehicle {
     private boolean hasSidecar;
     private double forkLength;
 
-    public Motorcycle(String vin, String make, String model, int year, int mileage, double price, boolean hasSidecar, double forkLength) {
-        super(vin, make, model, year, mileage, price);
+    public Motorcycle(String vin, String make, String model, int year, int mileage, double price, boolean available, boolean hasSidecar, double forkLength) {
+        super(vin, make, model, year, mileage, price, available);
         this.hasSidecar = hasSidecar;
         this.forkLength = forkLength;
     }
