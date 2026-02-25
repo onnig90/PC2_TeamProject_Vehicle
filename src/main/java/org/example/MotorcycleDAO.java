@@ -26,8 +26,8 @@ public class MotorcycleDAO {
             // insert into Motorcycle table
             psMotorcycle.setString(1, motorcycle.getMake());
             psMotorcycle.setString(2, motorcycle.getModel());
-            psMotorcycle.setDouble(3, motorcycle.getForkLength());
-            psMotorcycle.setBoolean(4, motorcycle.getHasSidecar());
+            psMotorcycle.setBoolean(3, motorcycle.getHasSidecar());
+            psMotorcycle.setDouble(4, motorcycle.getForkLength());
 
             psMotorcycle.executeUpdate();
 

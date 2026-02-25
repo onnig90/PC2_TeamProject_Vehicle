@@ -5,13 +5,14 @@ import java.sql.*;
 public class CarDAO {
     public static void insertCar(Car car) throws SQLException {
         String INSERT_VEHICLE_SQL = "insert into vehicle(vin, year, mileage, price, available) values (?, ?, ?, ?, ?)";
-        String INSERT_CAR_SQL = "insert into car(carMake, carModel, doorCount, trunkCap, hasAirConditioning) values (?, ?, ?, ?, ?)";
+        String INSERT_CAR_SQL = "insert into car(carMake, carModel, doorCount, trunkCap, hasAirConditioning) values (?, ?, ?, ?, ?);" +
+                "select carID from car where carMake = ? and carModel = ?";
         String INSERT_CARVEHICLE_SQL = "insert into carvehicle(vin, carID) values (?, ?)";
 
         try (
                 Connection connection = DBUtil.getConnection();
                 PreparedStatement psVehicle = connection.prepareStatement(INSERT_VEHICLE_SQL);
-                PreparedStatement psCar = connection.prepareStatement(INSERT_CAR_SQL, Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement psCar = connection.prepareStatement(INSERT_CAR_SQL);
                 PreparedStatement psCarVehicle = connection.prepareStatement(INSERT_CARVEHICLE_SQL)
         ) {
             // insert into Vehicle table
@@ -22,22 +23,43 @@ public class CarDAO {
             psVehicle.setBoolean(5, car.getIsAvailable());
 
             psVehicle.executeUpdate();
+            //try {
+            //    psVehicle.executeUpdate();
+            //} catch (SQLException e) {
+            //    System.err.println("Can't add vehicle.");
+            //    e.printStackTrace();
+            //    return;
+            //}
 
             // insert into Car table
+            // insert car sql
             psCar.setString(1, car.getMake());
             psCar.setString(2, car.getModel());
             psCar.setInt(3, car.getDoorCount());
             psCar.setDouble(4, car.getTrunkCapacity());
             psCar.setBoolean(5, car.getHasAirConditioning());
+            // select id sql
+            psCar.setString(6, car.getMake());
+            psCar.setString(7, car.getModel());
 
-            psCar.executeUpdate();
+            boolean isCarAdded = true;
+            try {
+                psCar.executeUpdate();
+            } catch (SQLException e) {
+                isCarAdded = false;
+            }
 
             int carId;
             try (ResultSet rs = psCar.getGeneratedKeys()) {
                 if (rs.next()) {
                     carId = rs.getInt(1);
                 } else {
-                    throw new SQLException("Failed to get the Car ID");
+                    if (!isCarAdded) {
+                        carId = rs.getInt("carId");
+                    } else {
+                        connection.rollback();
+                        throw new SQLException("Failed to get the Car ID");
+                    }
                 }
             }
 
