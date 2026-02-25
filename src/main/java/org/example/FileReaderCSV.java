@@ -24,9 +24,9 @@ public class FileReaderCSV {
         return carList;
     }
 
-    // --- READ MOTORBIKES ---
+    // --- READ MOTORCYCLES ---
     public static ArrayList<Motorcycle> loadMotorcyclesFromCSV(String filePath) {
-        ArrayList<Motorcycle> motorbikeList = new ArrayList<>();
+        ArrayList<Motorcycle> motorcycleList = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             br.readLine(); // <--- SKIPS THE HEADER ROW
             String line;
@@ -35,13 +35,13 @@ public class FileReaderCSV {
                 Motorcycle newMoto = parseMotorcycle(data);
                 
                 if (newMoto != null) {
-                    motorbikeList.add(newMoto);
+                    motorcycleList.add(newMoto);
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error reading the motorbike file: " + e.getMessage());
+            System.err.println("Error reading the motorcycle file: " + e.getMessage());
         }
-        return motorbikeList;
+        return motorcycleList;
     }
 
     private static Car parseCar(String[] data) {

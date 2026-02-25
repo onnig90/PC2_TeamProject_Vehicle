@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Main {
@@ -39,7 +40,20 @@ public class Main {
         System.out.println("\n--- Database Saving ---");
         System.out.println("Ready to connect to the database...");
         
-        // DBUtil.insertCars(carList);
-        // DBUtil.insertMotorbikes(motorbikeList);
+        for (Car car : carList){
+            try{
+                CarDAO.insertCar(car);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (Motorcycle motorcycle : motorcycleList){
+            try{
+                MotorcycleDAO.insertMotorcycle(motorcycle);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
