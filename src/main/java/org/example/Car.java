@@ -5,7 +5,8 @@ public class Car extends Vehicle {
     private double trunkCapacity;
     private boolean hasAirConditioning;
 
-    public Car(String vin, String make, String model, int year, int mileage, double price, boolean available, int doorCount, double trunkCapacity, boolean hasAirConditioning) {
+    public Car(String vin, String make, String model, int year, int mileage, double price, boolean available,
+               int doorCount, double trunkCapacity, boolean hasAirConditioning) {
         super(vin, make, model, year, mileage, price, available);
         this.doorCount = doorCount;
         this.trunkCapacity = trunkCapacity;

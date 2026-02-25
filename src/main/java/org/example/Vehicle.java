@@ -9,7 +9,8 @@ public abstract class Vehicle {
     protected double price;
     protected boolean available;
 
-    public Vehicle(String vin, String make, String model, int year, int mileage, double price, boolean available) {
+    public Vehicle(String vin, String make, String model, int year,
+                   int mileage, double price, boolean available) {
         this.vin = vin;
         this.make = make;
         this.model = model;

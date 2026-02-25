@@ -47,6 +47,7 @@ public class FileReaderCSV {
         return motorcycleList;
     }
 
+    // --- PARSING HELPER: CAR ---
     private static Car parseCar(String[] data) {
         try {
             String vin = data[0].trim();
