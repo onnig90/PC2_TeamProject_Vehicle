@@ -5,7 +5,6 @@ public class Car extends Vehicle {
     private double trunkCapacity;
     private boolean hasAirConditioning;
 
-    // FIX: Added trunkCapacity and hasAirConditioning to the parameters!
     public Car(String vin, String make, String model, int year, int mileage, double price, int doorCount, double trunkCapacity, boolean hasAirConditioning) {
         super(vin, make, model, year, mileage, price);
         this.doorCount = doorCount;

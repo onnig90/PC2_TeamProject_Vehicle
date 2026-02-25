@@ -20,7 +20,7 @@ public abstract class Vehicle {
     }
 
     public void markSold() {
-        available = false;
+        this.available = false;
     }
 
     public abstract String getCategory();
@@ -81,3 +81,4 @@ public abstract class Vehicle {
         this.available = available;
     }
 }
+
