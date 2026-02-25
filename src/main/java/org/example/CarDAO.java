@@ -33,8 +33,8 @@ public class CarDAO {
             psCar.executeUpdate();
 
             int carId;
-            try(ResultSet rs = psCar.getGeneratedKeys()) {
-                if(rs.next()) {
+            try (ResultSet rs = psCar.getGeneratedKeys()) {
+                if (rs.next()) {
                     carId = rs.getInt(1);
                 } else {
                     throw new SQLException("Failed to get the Car ID");

@@ -8,7 +8,7 @@ public class Main {
 
         // --- Read from files and create objects ---
         ArrayList<Car> carList = FileReaderCSV.loadCarsFromCSV("src/main/resources/CSV_Car.csv");
-        ArrayList<Motorcycle> motorbikeList = FileReaderCSV.loadMotorbikesFromCSV("src/main/resources/CSV_Motorcycle.csv");
+        ArrayList<Motorcycle> motorcycleList = FileReaderCSV.loadMotorcyclesFromCSV("src/main/resources/CSV_Motorcycle.csv");
 
         // --- Display item information in the console ---
         System.out.println("\n--- Loaded Cars ---");
@@ -23,11 +23,11 @@ public class Main {
             }
         }
 
-        System.out.println("\n--- Loaded Motorbikes ---");
-        if (motorbikeList.isEmpty()) {
-            System.out.println("No motorbikes were loaded. Check your motorbikes.csv file.");
+        System.out.println("\n--- Loaded Motorcycles ---");
+        if (motorcycleList.isEmpty()) {
+            System.out.println("No motorcycles were loaded. Check your motorcycles.csv file.");
         } else {
-            for (Motorcycle moto : motorbikeList) {
+            for (Motorcycle moto : motorcycleList) {
                 System.out.println("Category: " + moto.getCategory() + 
                                    " | VIN: " + moto.vin + 
                                    " | Make: " + moto.make + 

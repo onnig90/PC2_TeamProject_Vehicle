@@ -32,8 +32,8 @@ public class MotorcycleDAO {
             psMotorcycle.executeUpdate();
 
             int motorcycleId;
-            try(ResultSet rs = psMotorcycle.getGeneratedKeys()) {
-                if(rs.next()) {
+            try (ResultSet rs = psMotorcycle.getGeneratedKeys()) {
+                if (rs.next()) {
                     motorcycleId = rs.getInt(1);
                 } else {
                     throw new SQLException("Failed to get the Motorcycle ID");

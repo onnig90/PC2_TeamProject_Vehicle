@@ -29,7 +29,7 @@ public class FileReaderCSV {
     }
 
     // --- READ MOTORBIKES ---
-    public static ArrayList<Motorcycle> loadMotorbikesFromCSV(String filePath) {
+    public static ArrayList<Motorcycle> loadMotorcyclesFromCSV(String filePath) {
         ArrayList<Motorcycle> motorbikeList = new ArrayList<>();
         
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
